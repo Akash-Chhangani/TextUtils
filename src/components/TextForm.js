@@ -31,11 +31,14 @@ export default function TextForm(props) {
     setText(newText.join(" "));
   };
 
-  const [text, setText] = useState("Enter the text here!");
+  const [text, setText] = useState("");
 
   return (
     <>
-      <div className="container">
+      <div
+        className="container"
+        style={{ color: props.mode === "dark" ? "white" : "black" }}
+      >
         <h1>{props.heading}</h1>
         <div className="mb-3">
           <textarea
@@ -44,6 +47,10 @@ export default function TextForm(props) {
             id="box"
             rows="10"
             onChange={handleOnChange}
+            style={{
+              background: props.mode === "dark" ? "gray" : "light",
+              color: props.mode === "dark" ? "white" : "black",
+            }}
           ></textarea>
         </div>
 
@@ -59,7 +66,7 @@ export default function TextForm(props) {
           className="btn btn-primary mx-2 "
           onClick={lowerCase}
         >
-          Change To UpperCase
+          Change To LowerCase
         </button>
         <button
           type="button"
@@ -84,14 +91,21 @@ export default function TextForm(props) {
           Remove Spaces
         </button>
       </div>
-      <div className="container my-3">
+      <div
+        className="container my-3"
+        style={{ color: props.mode === "dark" ? "white" : "black" }}
+      >
         <h1>Your Text Summary</h1>
         <p>
           {text.split(" ").length} words and {text.length} characters
         </p>
         <p>{0.008 * text.split(" ").length} Minutes read</p>
         <h2>Preview</h2>
-        <p>{text}</p>
+        <p>
+          {text.length > 0
+            ? text
+            : "Enter something in the text-box above to preview it here "}
+        </p>
       </div>
     </>
   );
