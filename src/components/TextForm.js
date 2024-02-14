@@ -20,6 +20,17 @@ export default function TextForm(props) {
     setText(newText);
   };
 
+  const copyText = () => {
+    const text = document.querySelector("#box");
+    text.select();
+    navigator.clipboard.writeText(text.value);
+  };
+
+  const removeSpace = () => {
+    let newText = text.split(/[ ]+/);
+    setText(newText.join(" "));
+  };
+
   const [text, setText] = useState("Enter the text here!");
 
   return (
@@ -56,6 +67,21 @@ export default function TextForm(props) {
           onClick={clearText}
         >
           Clear Text
+        </button>
+
+        <button
+          type="button"
+          className="btn btn-primary mx-2 "
+          onClick={copyText}
+        >
+          Copy Text
+        </button>
+        <button
+          type="button"
+          className="btn btn-primary mx-2 "
+          onClick={removeSpace}
+        >
+          Remove Spaces
         </button>
       </div>
       <div className="container my-3">
