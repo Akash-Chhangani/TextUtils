@@ -48,8 +48,8 @@ export default function TextForm(props) {
             rows="10"
             onChange={handleOnChange}
             style={{
-              background: props.mode === "dark" ? "gray" : "light",
-              color: props.mode === "dark" ? "white" : "black",
+              background: props.mode === "dark" ? "light" : "light",
+              color: props.mode === "dark" ? "black" : "black",
             }}
           ></textarea>
         </div>
