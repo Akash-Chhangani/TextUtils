@@ -8,28 +8,54 @@ export default function TextForm(props) {
   const upperCase = () => {
     let newText = text.toUpperCase();
     setText(newText);
+    if (text === "") {
+      props.showAlert("Can't change to UpperCase text is empty!!", "warning");
+    } else {
+      props.showAlert("Converted to UpperCase", "success");
+    }
   };
 
   const lowerCase = () => {
     let newText = text.toLowerCase();
     setText(newText);
+    if (text === "") {
+      props.showAlert("Can't change to LowerCase text is empty!!", "warning");
+    } else {
+      props.showAlert("Converted to LowerCase", "success");
+    }
   };
 
   const clearText = () => {
     let newText = "";
     setText(newText);
+    if (text === "") {
+      props.showAlert("No Data found to clear !!", "warning");
+    } else {
+      props.showAlert("Data deleted successfully", "success");
+    }
   };
 
   const copyText = () => {
     const text = document.querySelector("#box");
     text.select();
     navigator.clipboard.writeText(text.value);
+    if (text === "") {
+      props.showAlert("No Data found to copy !!", "warning"); // Not working
+    } else {
+      props.showAlert("All the Text copied!", "success");
+    }
   };
 
-  const removeSpace = () => {
+  function removeSpace() {
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "));
-  };
+
+    if (text === "") {
+      props.showAlert("No Data found for Space Remove !!", "warning");
+    } else {
+      props.showAlert("All the extra spaces removed successfully ", "success");
+    }
+  }
 
   const [text, setText] = useState("");
 
