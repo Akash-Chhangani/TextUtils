@@ -52,7 +52,7 @@ function App() {
             element={
               <TextForm
                 showAlert={showAlert}
-                heading="Enter the text here to analyze"
+                heading="Try TextUtils - Word Counter, Character Counter & Many more.."
                 mode={mode}
               />
             }
