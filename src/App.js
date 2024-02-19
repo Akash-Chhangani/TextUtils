@@ -41,12 +41,12 @@ function App() {
           mode={mode}
           toggleMode={toggleMode}
         />
-        <Alert alert={alert} />
         <div className="container my-3"></div>
         <Routes>
-          <Route path="/about" element={<About />} />
+          <Route exact path="/about" element={<About />} />
 
           <Route
+            exact
             path="/"
             element={
               <TextForm
@@ -58,6 +58,7 @@ function App() {
           ></Route>
         </Routes>
       </Router>
+      <Alert alert={alert} />
     </>
   );
 }

@@ -82,21 +82,21 @@ export default function TextForm(props) {
 
         <button
           type="button"
-          className="btn btn-primary mx-2"
+          className="btn btn-primary mx-2 my-1"
           onClick={upperCase}
         >
           Change To UpperCase
         </button>
         <button
           type="button"
-          className="btn btn-primary mx-2 "
+          className="btn btn-primary mx-2  my-1"
           onClick={lowerCase}
         >
           Change To LowerCase
         </button>
         <button
           type="button"
-          className="btn btn-primary mx-2 "
+          className="btn btn-primary mx-2 my-1"
           onClick={clearText}
         >
           Clear Text
@@ -104,14 +104,14 @@ export default function TextForm(props) {
 
         <button
           type="button"
-          className="btn btn-primary mx-2 "
+          className="btn btn-primary mx-2 my-1"
           onClick={copyText}
         >
           Copy Text
         </button>
         <button
           type="button"
-          className="btn btn-primary mx-2 "
+          className="btn btn-primary mx-2 my-1 "
           onClick={removeSpace}
         >
           Remove Spaces
@@ -123,9 +123,14 @@ export default function TextForm(props) {
       >
         <h1>Your Text Summary</h1>
         <p>
-          {text.split(" ").length} words and {text.length} characters
+          {
+            text.split(/\s+/).filter((element) => {
+              return element.length !== 0;
+            }).length
+          }{" "}
+          words and {text.length} characters
         </p>
-        <p>{0.008 * text.split(" ").length} Minutes read</p>
+        <p>{0.008 * text.split("").length} Minutes read</p>
         <h2>Preview</h2>
         <p>
           {text.length > 0
