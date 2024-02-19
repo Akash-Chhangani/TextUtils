@@ -41,9 +41,10 @@ function App() {
           mode={mode}
           toggleMode={toggleMode}
         />
+        <Alert alert={alert} />
         <div className="container my-3"></div>
         <Routes>
-          <Route exact path="/about" element={<About />} />
+          <Route exact path="/about" element={<About mode={mode} />} />
 
           <Route
             exact
@@ -58,7 +59,6 @@ function App() {
           ></Route>
         </Routes>
       </Router>
-      <Alert alert={alert} />
     </>
   );
 }
